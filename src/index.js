@@ -15,14 +15,10 @@ function connect(){
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
-  
-  document.getElementById('root')
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 reportWebVitals();
-
-
- 
-  
-
 
