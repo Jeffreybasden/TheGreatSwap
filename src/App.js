@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import react from 'react'
+
+import { ethers } from 'ethers';
+
+function connect(){
+  if(window.ethereum){
+    window.ethereum.request({method:'eth_sendTransaction'})
+  }else window.alert('Please add metamask extension!')
+}
+
 
 function App() {
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <div>
+          <input type='input'/>
+        </div>
+        <div>
+          <p></p>
+        </div>
+        <button onClick={connect}>Connect</button>
+      </div>
     </div>
   );
 }
