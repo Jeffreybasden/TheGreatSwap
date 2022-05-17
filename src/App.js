@@ -6,18 +6,21 @@ import {ContentDiv} from './styled-components'
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
-
+  const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+ 
+ 
   async function connect() {
     if(window.ethereum){
-      const res = await window.ethereum.request({ method: 'eth_requestAccounts' })
-      if (res.length > 0) {
+      
+      await provider.send("eth_requestAccounts", []);
+      if (provider.getSigner()) {
         setIsConnected(true);
-      }
+      }else setIsConnected(false)
       return ;
     }else window.alert('Please add metamask extension!')
   }
 
-  async function swap(){
+  async function Swap(){
 
   }
 
@@ -32,7 +35,7 @@ function App() {
         <div>
           <p></p>
         </div>
-        {isConnected && <button>Connected!</button>}
+        {isConnected && <button onClick={Swap}>Swap</button>}
         {!isConnected && <button onClick={connect}>Connect</button>}
       </div>
     </ContentDiv>
