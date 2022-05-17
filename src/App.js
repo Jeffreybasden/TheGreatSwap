@@ -10,7 +10,6 @@ function connect(){
 
 
 function App() {
- 
   return (
     <div>
       <div>
