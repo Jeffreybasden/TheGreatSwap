@@ -2,9 +2,9 @@ import react from 'react'
 
 import { ethers } from 'ethers';
 
-function connect(){
+async function connect(){
   if(window.ethereum){
-    window.ethereum.request({method:'eth_sendTransaction'})
+    await window.ethereum.request({method:'eth_requestAccounts'})
   }else window.alert('Please add metamask extension!')
 }
 
