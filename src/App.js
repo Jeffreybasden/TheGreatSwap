@@ -1,13 +1,14 @@
 import react from 'react'
 import { useState } from 'react';
 import { ethers } from 'ethers';
-import {ContentDiv} from './styled-components'
+import {ContentDiv, SwapDiv} from './styled-components'
 
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
   const [displayNum, setDisplayNum] = useState(0)
+  
   async function connect() {
     if(window.ethereum){
       
@@ -26,7 +27,7 @@ function App() {
 
   return (
     <ContentDiv>
-      <div>
+      <SwapDiv>
         <div>
           <input placeholder='code7' onChange={(e) => setDisplayNum(e.target.value)} type='input' />
         </div>
@@ -36,7 +37,7 @@ function App() {
         </div>
         {isConnected && <button onClick={Swap}>Swap</button>}
         {!isConnected && <button onClick={connect}>Connect</button>}
-      </div>
+      </SwapDiv>
     </ContentDiv>
   );
 }
