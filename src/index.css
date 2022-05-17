@@ -1,0 +1,23 @@
+#root {
+  background-image: url('/home/jedd/TheGreatSwap/src/assets/Free-Website-BAckgrounds1.webp');
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  contain: content;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  contain: content;
+  margin: 0;
+  padding: 0;
+}
