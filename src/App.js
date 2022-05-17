@@ -7,8 +7,7 @@ import {ContentDiv} from './styled-components'
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
- 
- 
+  const [displayNum, setDisplayNum] = useState(0)
   async function connect() {
     if(window.ethereum){
       
@@ -29,11 +28,11 @@ function App() {
     <ContentDiv>
       <div>
         <div>
-          <input type='input' />
+          <input placeholder='code7' onChange={(e) => setDisplayNum(e.target.value)} type='input' />
         </div>
 
         <div>
-          <p></p>
+          <p>{displayNum*0.01} 7Share</p>
         </div>
         {isConnected && <button onClick={Swap}>Swap</button>}
         {!isConnected && <button onClick={connect}>Connect</button>}
