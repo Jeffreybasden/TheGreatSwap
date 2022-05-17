@@ -8,7 +8,10 @@ function App() {
 
   async function connect() {
     if(window.ethereum){
-      await window.ethereum.request({method:'eth_requestAccounts'})
+      const res = await window.ethereum.request({ method: 'eth_requestAccounts' })
+      if (res.length > 0) {
+        setIsConnected(true);
+      }
       return ;
     }else window.alert('Please add metamask extension!')
   }
@@ -28,7 +31,7 @@ function App() {
           <p></p>
         </div>
         {isConnected && <button>Connected!</button>}
-        {!isConnected && <button onClick={connect}></button>}
+        {!isConnected && <button onClick={connect}>Connect</button>}
       </div>
     </div>
   );
