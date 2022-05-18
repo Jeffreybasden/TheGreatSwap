@@ -1,7 +1,7 @@
 import react from 'react'
 import { useState } from 'react';
 import { ethers } from 'ethers';
-import {ContentDiv, SwapDiv} from './styled-components'
+import {ContentDiv, SwapDiv, Title, TitleBackground} from './styled-components'
 
 
 function App() {
@@ -27,11 +27,13 @@ function App() {
 
   return (
     <ContentDiv>
+      <TitleBackground>
+        <Title>Code7 Swap</Title> 
+      </TitleBackground>
       <SwapDiv>
         <div>
           <input placeholder='code7' onChange={(e) => setDisplayNum(e.target.value)} type='input' />
         </div>
-
         <div>
           <p>{displayNum*0.01} 7Share</p>
         </div>
