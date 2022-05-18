@@ -38,7 +38,7 @@ export const TitleBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("../assets/greatswap.gif");
+  background-image: url("../assets/greatswap.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: fit-content;
