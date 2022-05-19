@@ -8,6 +8,8 @@ function App() {
   const [isConnected, setIsConnected] = useState(false);
   const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
   const [displayNum, setDisplayNum] = useState(0)
+  let contract = new ethers.Contract(contractAddress, abi, provider);
+  
   async function connect() {
     if(window.ethereum){
       
@@ -20,7 +22,7 @@ function App() {
   }
 
   async function Swap(){
-
+    await contract.swap()
   }
 
 
