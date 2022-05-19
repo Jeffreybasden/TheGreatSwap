@@ -8,10 +8,7 @@ function App() {
   const [isConnected, setIsConnected] = useState(false);
   const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
   const [displayNum, setDisplayNum] = useState(0)
-<<<<<<< HEAD
   let contract = new ethers.Contract(contractAddress, abi, provider);
-=======
->>>>>>> 1b783dbe8c43d49d33b32b2b39621e1f7b8fbb1e
   
   async function connect() {
     if(window.ethereum){
