@@ -1,14 +1,17 @@
 import react from 'react'
 import { useState } from 'react';
 import { ethers } from 'ethers';
-import {ContentDiv} from './styled-components'
+import {ContentDiv, SwapDiv, Title, TitleBackground} from './styled-components'
 
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
   const [displayNum, setDisplayNum] = useState(0)
+<<<<<<< HEAD
   let contract = new ethers.Contract(contractAddress, abi, provider);
+=======
+>>>>>>> 1b783dbe8c43d49d33b32b2b39621e1f7b8fbb1e
   
   async function connect() {
     if(window.ethereum){
@@ -28,17 +31,19 @@ function App() {
 
   return (
     <ContentDiv>
-      <div>
+      <TitleBackground>
+        <Title>Code7 Swap</Title> 
+      </TitleBackground>
+      <SwapDiv>
         <div>
           <input placeholder='code7' onChange={(e) => setDisplayNum(e.target.value)} type='input' />
         </div>
-
         <div>
           <p>{displayNum*0.01} 7Share</p>
         </div>
         {isConnected && <button onClick={Swap}>Swap</button>}
         {!isConnected && <button onClick={connect}>Connect</button>}
-      </div>
+      </SwapDiv>
     </ContentDiv>
   );
 }
