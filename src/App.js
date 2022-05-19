@@ -1,36 +1,46 @@
 import react from 'react'
 import { useState } from 'react';
 import { ethers } from 'ethers';
-
-async function connect(){
-  const [isConnected, setIsConnected] = useState(false)
-
-  if(window.ethereum){
-    await window.ethereum.request({method:'eth_requestAccounts'})
-    return 
-  }else window.alert('Please add metamask extension!')
-}
-
-async function swap(){
-
-}
-
+import {ContentDiv, SwapDiv, Title, TitleBackground} from './styled-components'
 
 
 function App() {
+  const [isConnected, setIsConnected] = useState(false);
+  const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+  const [displayNum, setDisplayNum] = useState(0)
+  
+  async function connect() {
+    if(window.ethereum){
+      
+      await provider.send("eth_requestAccounts", []);
+      if (provider.getSigner()) {
+        setIsConnected(true);
+      }else setIsConnected(false)
+      return ;
+    }else window.alert('Please add metamask extension!')
+  }
+
+  async function Swap(){
+
+  }
+
+
   return (
-    <div>
-      <div>
+    <ContentDiv>
+      <TitleBackground>
+        <Title>Code7 Swap</Title> 
+      </TitleBackground>
+      <SwapDiv>
         <div>
-          <input type='input'/>
+          <input placeholder='code7' onChange={(e) => setDisplayNum(e.target.value)} type='input' />
         </div>
         <div>
-          <p></p>
+          <p>{displayNum*0.01} 7Share</p>
         </div>
-        <button onClick={connect}>Connect</button>
-        <button></button>
-      </div>
-    </div>
+        {isConnected && <button onClick={Swap}>Swap</button>}
+        {!isConnected && <button onClick={connect}>Connect</button>}
+      </SwapDiv>
+    </ContentDiv>
   );
 }
 
